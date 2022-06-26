@@ -1,6 +1,5 @@
 package com.spacecodee.universityregistration.dto.student;
 
-import com.spacecodee.universityregistration.dto.course.CourseDto;
 import lombok.*;
 
 @AllArgsConstructor
@@ -11,5 +10,5 @@ import lombok.*;
 public class StudentDto {
 
     private int studentId;
-    private CourseDto courseDto;
+    private String studentName;
 }

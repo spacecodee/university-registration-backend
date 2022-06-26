@@ -19,7 +19,7 @@ public class CourseEntity {
     @Column(name = "course_id")
     private int courseId;
     @Column(name = "course_name")
-    private String courseName;
+    private String courseRating;
     @ManyToMany(mappedBy = "courseLikesByStudentId")
     @ToString.Exclude
     private List<StudentEntity> courseLikesByCourseId = new ArrayList<>();

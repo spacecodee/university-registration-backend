@@ -8,6 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 public class CourseLikeDto {
-    private int courseLikeStudentId;
-    private int courseLikeCourseId;
+    private int studentId;
+    private int courseId;
+
 }
