@@ -4,9 +4,7 @@ import com.spacecodee.universityregistration.entity.course_like.CourseRatingEnti
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +22,7 @@ public class CourseEntity {
     private String courseName;
     @OneToMany(mappedBy = "courseEntity")
     @ToString.Exclude
-    private List<CourseRatingEntity> studentEntities = new ArrayList<>();
+    private Set<CourseRatingEntity> studentEntities = new HashSet<>();
 
     public CourseEntity(String courseName) {
         this.courseName = courseName;

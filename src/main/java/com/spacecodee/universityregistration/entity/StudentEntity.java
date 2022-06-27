@@ -23,7 +23,7 @@ public class StudentEntity {
     private String studentName;
     @OneToMany(mappedBy = "studentEntity")
     @ToString.Exclude
-    private List<CourseRatingEntity> courseRatingEntities = new ArrayList<>();
+    private Set<CourseRatingEntity> courseRatingEntities = new HashSet<>();
 
     public StudentEntity(String studentName) {
         this.studentName = studentName;
