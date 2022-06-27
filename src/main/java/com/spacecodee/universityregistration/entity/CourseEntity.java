@@ -1,10 +1,12 @@
 package com.spacecodee.universityregistration.entity;
 
+import com.spacecodee.universityregistration.entity.course_like.CourseRatingEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,8 +21,24 @@ public class CourseEntity {
     @Column(name = "course_id")
     private int courseId;
     @Column(name = "course_name")
-    private String courseRating;
-    @ManyToMany(mappedBy = "courseLikesByStudentId")
+    private String courseName;
+    @OneToMany(mappedBy = "courseEntity")
     @ToString.Exclude
-    private List<StudentEntity> courseLikesByCourseId = new ArrayList<>();
+    private List<CourseRatingEntity> studentEntities = new ArrayList<>();
+
+    public CourseEntity(String courseName) {
+        this.courseName = courseName;
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CourseEntity)) return false;
+        CourseEntity that = (CourseEntity) o;
+        return getCourseId() == that.getCourseId() && getCourseName().equals(
+                that.getCourseName()) && getStudentEntities().equals(that.getStudentEntities());
+    }
+
+    @Override public int hashCode() {
+        return Objects.hash(getCourseId(), getCourseName(), getStudentEntities());
+    }
 }

@@ -1,5 +1,6 @@
 package com.spacecodee.universityregistration.entity;
 
+import com.spacecodee.universityregistration.entity.course_like.CourseRatingEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,11 +21,23 @@ public class StudentEntity {
     private int studentId;
     @Column(name = "student_name")
     private String studentName;
-    @ManyToMany
-    @JoinTable(
-            name = "course_like",
-            joinColumns = @JoinColumn(name = "course_like_student_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_like_course_id"))
+    @OneToMany(mappedBy = "studentEntity")
     @ToString.Exclude
-    private List<CourseEntity> courseLikesByStudentId = new ArrayList<>();
+    private List<CourseRatingEntity> courseRatingEntities = new ArrayList<>();
+
+    public StudentEntity(String studentName) {
+        this.studentName = studentName;
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StudentEntity)) return false;
+        StudentEntity that = (StudentEntity) o;
+        return getStudentId() == that.getStudentId() && getStudentName().equals(
+                that.getStudentName()) && getCourseRatingEntities().equals(that.getCourseRatingEntities());
+    }
+
+    @Override public int hashCode() {
+        return Objects.hash(getStudentId(), getStudentName(), getCourseRatingEntities());
+    }
 }

@@ -7,6 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class Message {
+public class MessageData<E>{
     private String message;
+    private E data;
 }

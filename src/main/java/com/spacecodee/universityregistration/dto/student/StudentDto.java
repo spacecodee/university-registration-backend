@@ -9,6 +9,6 @@ import lombok.*;
 @ToString
 public class StudentDto {
 
-    private int studentId;
-    private String studentName;
+    private int id;
+    private String name;
 }

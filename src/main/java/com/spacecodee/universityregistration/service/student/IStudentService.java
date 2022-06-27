@@ -1,4 +1,4 @@
-package com.spacecodee.universityregistration.service;
+package com.spacecodee.universityregistration.service.student;
 
 import com.spacecodee.universityregistration.entity.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface IStudentService extends JpaRepository<StudentEntity, Integer> {
 
     StudentEntity findStudentEntityByStudentId(int studentId);
+
+    StudentEntity findStudentEntityByStudentName(String studentName);
 }
