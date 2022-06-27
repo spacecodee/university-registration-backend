@@ -1,4 +1,4 @@
-package com.spacecodee.universityregistration.entity.course_like;
+package com.spacecodee.universityregistration.entity.course_rating;
 
 import com.spacecodee.universityregistration.entity.CourseEntity;
 import com.spacecodee.universityregistration.entity.StudentEntity;
@@ -13,16 +13,16 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-@Table(name = "course_like")
+@Table(name = "course_rating")
 public class CourseRatingEntity {
 
     @EmbeddedId
     private CourseRatingKey id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @MapsId("studentId")
     @JoinColumn(name = "course_like_student_id")
     private StudentEntity studentEntity;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @MapsId("courseId")
     @JoinColumn(name = "course_like_course_id")
     private CourseEntity courseEntity;

@@ -7,4 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ICourseService extends JpaRepository<CourseEntity, Integer> {
     CourseEntity findCourseEntityByCourseName(String courseName);
+
+    boolean existsCourseEntityByCourseName(String courseName);
 }

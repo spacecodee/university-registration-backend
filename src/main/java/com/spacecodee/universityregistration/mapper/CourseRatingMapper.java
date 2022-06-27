@@ -1,10 +1,11 @@
 package com.spacecodee.universityregistration.mapper;
 
-import com.spacecodee.universityregistration.dto.course_like.CourseRatingLikeDto;
+import com.spacecodee.universityregistration.dto.course_rating.CourseRatingKeyDto;
+import com.spacecodee.universityregistration.dto.course_rating.CourseRatingLikeDto;
 import com.spacecodee.universityregistration.entity.CourseEntity;
 import com.spacecodee.universityregistration.entity.StudentEntity;
-import com.spacecodee.universityregistration.entity.course_like.CourseRatingEntity;
-import com.spacecodee.universityregistration.entity.course_like.CourseRatingKey;
+import com.spacecodee.universityregistration.entity.course_rating.CourseRatingEntity;
+import com.spacecodee.universityregistration.entity.course_rating.CourseRatingKey;
 
 public class CourseRatingMapper {
 
@@ -29,5 +30,20 @@ public class CourseRatingMapper {
         courseEntity.setCourseId(courseRatingLikeDto.getCourseDto().getId());
         courseEntity.setCourseName(courseRatingLikeDto.getCourseDto().getName());
         return courseEntity;
+    }
+
+    public static CourseRatingEntity mapCourseRatingDtoToEntity(CourseRatingLikeDto courseRatingLikeDto,
+                                                                StudentEntity studentEntity,
+                                                                CourseEntity courseEntity) {
+        return new CourseRatingEntity(
+                new CourseRatingKey(studentEntity.getStudentId(), courseEntity.getCourseId()),
+                studentEntity,
+                courseEntity,
+                courseRatingLikeDto.getRating()
+        );
+    }
+
+    public static CourseRatingKey mapCourseKeyDtoToEntity(CourseRatingKeyDto courseRatingKeyDto) {
+        return new CourseRatingKey(courseRatingKeyDto.getStudentId(), courseRatingKeyDto.getCourseId());
     }
 }

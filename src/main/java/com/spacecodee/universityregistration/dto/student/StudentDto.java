@@ -10,5 +10,6 @@ import lombok.*;
 public class StudentDto {
 
     private int id;
+    private String identification;
     private String name;
 }

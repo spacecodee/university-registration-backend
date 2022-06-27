@@ -1,6 +1,6 @@
 package com.spacecodee.universityregistration.entity;
 
-import com.spacecodee.universityregistration.entity.course_like.CourseRatingEntity;
+import com.spacecodee.universityregistration.entity.course_rating.CourseRatingEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,7 +20,7 @@ public class CourseEntity {
     private int courseId;
     @Column(name = "course_name")
     private String courseName;
-    @OneToMany(mappedBy = "courseEntity")
+    @OneToMany(mappedBy = "courseEntity", cascade = CascadeType.MERGE)
     @ToString.Exclude
     private Set<CourseRatingEntity> studentEntities = new HashSet<>();
 

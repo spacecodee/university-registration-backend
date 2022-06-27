@@ -1,6 +1,6 @@
 package com.spacecodee.universityregistration.entity;
 
-import com.spacecodee.universityregistration.entity.course_like.CourseRatingEntity;
+import com.spacecodee.universityregistration.entity.course_rating.CourseRatingEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,16 +14,17 @@ import java.util.*;
 @Entity
 @Table(name = "student")
 public class StudentEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_id")
     private int studentId;
+    @Column(name = "student_identification", unique = true)
+    private String studentIdentification;
     @Column(name = "student_name")
     private String studentName;
-    @OneToMany(mappedBy = "studentEntity")
+    @OneToMany(mappedBy = "studentEntity", cascade = CascadeType.MERGE)
     @ToString.Exclude
-    private Set<CourseRatingEntity> courseRatingEntities = new HashSet<>();
+    private List<CourseRatingEntity> courseRatingEntities = new ArrayList<>();
 
     public StudentEntity(String studentName) {
         this.studentName = studentName;

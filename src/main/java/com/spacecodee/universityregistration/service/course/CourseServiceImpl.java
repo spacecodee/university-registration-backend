@@ -1,7 +1,9 @@
 package com.spacecodee.universityregistration.service.course;
 
 import com.spacecodee.universityregistration.entity.CourseEntity;
+import com.spacecodee.universityregistration.exceptions.InvalidInsuranceAmountException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,13 +24,19 @@ public class CourseServiceImpl {
     public CourseEntity findCourseByName(String courseName) {
         return this.iCourseService.findCourseEntityByCourseName(courseName);
     }
+
+    public boolean existsCourseByName(String courseName) {
+        return this.iCourseService.existsCourseEntityByCourseName(courseName);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
     public boolean addUpdateCourse(CourseEntity courseEntity) {
         try {
-            iCourseService.save(courseEntity);
+            this.iCourseService.save(courseEntity);
             return true;
         } catch (Exception e) {
             e.printStackTrace(System.out);
-            return false;
+            return true;
         }
     }
 

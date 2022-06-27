@@ -2,11 +2,10 @@ package com.spacecodee.universityregistration.service.course_rating;
 
 import com.spacecodee.universityregistration.entity.CourseEntity;
 import com.spacecodee.universityregistration.entity.StudentEntity;
-import com.spacecodee.universityregistration.entity.course_like.CourseRatingEntity;
-import com.spacecodee.universityregistration.entity.course_like.CourseRatingKey;
+import com.spacecodee.universityregistration.entity.course_rating.CourseRatingEntity;
+import com.spacecodee.universityregistration.entity.course_rating.CourseRatingKey;
 import com.spacecodee.universityregistration.service.course.ICourseService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
@@ -16,12 +15,12 @@ import javax.persistence.EntityManager;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
-class CourseLikeServiceImplTest {
+class CourseRatingServiceImplTest {
 
     private final ICourseService iCourseLikeService;
     private final EntityManager entityManager;
 
-    public CourseLikeServiceImplTest(ICourseService iCourseLikeService, EntityManager entityManager) {
+    public CourseRatingServiceImplTest(ICourseService iCourseLikeService, EntityManager entityManager) {
         this.iCourseLikeService = iCourseLikeService;
         this.entityManager = entityManager;
     }

@@ -1,6 +1,5 @@
-package com.spacecodee.universityregistration.dto.course_like;
+package com.spacecodee.universityregistration.dto.course_rating;
 
-import com.spacecodee.universityregistration.dto.course.CourseRatingDto;
 import lombok.*;
 
 import java.util.List;
@@ -10,9 +9,10 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class CoursesLikesDto {
+public class CoursesRatingDto {
 
     private int studentId;
+    private String studentIdentification;
     private String studentName;
     private List<CourseRatingDto> ratingDtoList;
 }

@@ -1,13 +1,15 @@
 package com.spacecodee.universityregistration.service.student;
 
-import com.spacecodee.universityregistration.dto.course_like.CoursesLikesDto;
+import com.spacecodee.universityregistration.dto.course_rating.CoursesRatingDto;
 import com.spacecodee.universityregistration.entity.StudentEntity;
 import com.spacecodee.universityregistration.mapper.StudentMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class StudentServiceImpl {
 
     private final IStudentService studentLikesCourseService;
@@ -20,13 +22,18 @@ public class StudentServiceImpl {
         return studentLikesCourseService.findAll();
     }
 
-    public StudentEntity findStudentByName(String studentName) {
-        return studentLikesCourseService.findStudentEntityByStudentName(studentName);
+    public StudentEntity findStudentByIdentification(String studentIdentification) {
+        return studentLikesCourseService.findStudentEntityByStudentIdentification(studentIdentification);
     }
 
+    public boolean existsStudentByIdentification(String studentIdentification) {
+        return studentLikesCourseService.existsStudentEntityByStudentIdentification(studentIdentification);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
     public boolean addUpdateStudent(StudentEntity studentEntity) {
         try {
-            studentLikesCourseService.save(studentEntity);
+            this.studentLikesCourseService.save(studentEntity);
             return true;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -44,7 +51,7 @@ public class StudentServiceImpl {
         }
     }
 
-    public CoursesLikesDto getCoursesLikeByStudentId(int studentId) {
+    public CoursesRatingDto getCoursesLikeByStudentId(int studentId) {
         StudentEntity studentEntity = studentLikesCourseService.findStudentEntityByStudentId(studentId);
 
         if (studentEntity == null) return null;

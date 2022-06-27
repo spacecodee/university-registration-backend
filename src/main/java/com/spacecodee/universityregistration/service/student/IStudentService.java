@@ -7,5 +7,7 @@ public interface IStudentService extends JpaRepository<StudentEntity, Integer> {
 
     StudentEntity findStudentEntityByStudentId(int studentId);
 
-    StudentEntity findStudentEntityByStudentName(String studentName);
+    StudentEntity findStudentEntityByStudentIdentification(String studentName);
+
+    boolean existsStudentEntityByStudentIdentification(String studentIdentification);
 }

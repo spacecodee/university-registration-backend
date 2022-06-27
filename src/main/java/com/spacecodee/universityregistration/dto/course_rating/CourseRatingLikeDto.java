@@ -1,4 +1,4 @@
-package com.spacecodee.universityregistration.dto.course_like;
+package com.spacecodee.universityregistration.dto.course_rating;
 
 import com.spacecodee.universityregistration.dto.course.CourseDto;
 import com.spacecodee.universityregistration.dto.student.StudentDto;

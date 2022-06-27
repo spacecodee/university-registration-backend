@@ -1,4 +1,4 @@
-package com.spacecodee.universityregistration.dto.course;
+package com.spacecodee.universityregistration.dto.course_rating;
 
 import lombok.*;
 
