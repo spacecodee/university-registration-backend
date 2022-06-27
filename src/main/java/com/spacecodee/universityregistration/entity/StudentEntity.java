@@ -1,5 +1,6 @@
 package com.spacecodee.universityregistration.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.spacecodee.universityregistration.entity.course_rating.CourseRatingEntity;
 import lombok.*;
 
@@ -22,8 +23,9 @@ public class StudentEntity {
     private String studentIdentification;
     @Column(name = "student_name")
     private String studentName;
-    @OneToMany(mappedBy = "studentEntity", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<CourseRatingEntity> courseRatingEntities = new ArrayList<>();
 
     public StudentEntity(String studentName) {

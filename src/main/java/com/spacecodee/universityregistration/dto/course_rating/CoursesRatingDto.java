@@ -2,6 +2,7 @@ package com.spacecodee.universityregistration.dto.course_rating;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @AllArgsConstructor
@@ -9,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class CoursesRatingDto {
+public class CoursesRatingDto implements Serializable {
 
     private int studentId;
     private String studentIdentification;

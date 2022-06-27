@@ -1,5 +1,6 @@
 package com.spacecodee.universityregistration.entity.course_rating;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.spacecodee.universityregistration.entity.CourseEntity;
 import com.spacecodee.universityregistration.entity.StudentEntity;
 import lombok.*;
@@ -18,13 +19,17 @@ public class CourseRatingEntity {
 
     @EmbeddedId
     private CourseRatingKey id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("studentId")
     @JoinColumn(name = "course_like_student_id")
+    @ToString.Exclude
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private StudentEntity studentEntity;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("courseId")
     @JoinColumn(name = "course_like_course_id")
+    @ToString.Exclude
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private CourseEntity courseEntity;
     @Column(name = "course_like_rating")
     private byte rating;
